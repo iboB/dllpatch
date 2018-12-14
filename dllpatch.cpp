@@ -68,7 +68,8 @@ void print_help()
         "\n"
         "Example:\n"
         "    dllpatch.exe myexe.exe -r foo.dll foo\\foo.dll -o myexe_patched.exe\n"
-        "         Patches myexe in place to link against foo\\foo.dll instead of foo.dll.\n"
+        "         Patches myexe to link against foo\\foo.dll instead of foo.dll.\n"
+        "         Writes output to myexe_patched.exe.\n"
         "\n";
 }
 
