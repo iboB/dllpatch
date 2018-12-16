@@ -1,0 +1,28 @@
+# http://www.appveyor.com/docs/appveyor-yml
+
+notifications:
+  - provider: Email
+    to:
+      - b.stanimirov@abv.bg
+    on_build_status_changed: true
+    on_build_failure: true
+    on_build_success: false
+
+clone_depth: 5
+
+matrix:
+  fast_finish: false
+
+environment:
+  matrix:
+  # - gen: "Visual Studio 14 2015"
+  - gen: "Visual Studio 15 2017"
+    APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+
+build_script:
+  - mkdir build
+  - cd build
+  - cmake .. -DDLLPATCH_DEMO=1
+  - msbuild dllpatch.sln /p:Configuration=Debug;Platform=Win32 /maxcpucount /verbosity:minimal
+  - cd ..
+  - run-demo.bat
