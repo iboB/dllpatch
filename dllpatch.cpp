@@ -88,7 +88,7 @@ int main(int argc, char* argv[])
     for (int i=1; i<argc; ++i)
     {
         const string arg = argv[i];
-        
+
         if (arg == "-v" || arg == "--version")
         {
             print_version();
@@ -174,16 +174,19 @@ int main(int argc, char* argv[])
             auto max_new_name_length = end - it;
 
             const string new_dll_name = argv[++i];
-            if (new_dll_name.length() > max_new_name_length)
+            if (new_dll_name.length() > size_t(max_new_name_length))
             {
                 cerr << "Error: there is no room in " << exe_name << " to replace "
-                    << dll_name << " with " << new_dll_name 
+                    << dll_name << " with " << new_dll_name
                     << ". Consider linking with a longer DLL name to make room.\n";
                 return 1;
             }
 
             end = std::copy(new_dll_name.begin(), new_dll_name.end(), it);
-            *end = 0;
+            do
+            { // fill the rest with zeroes so it would appear as padding on subsequent patches
+                *end = 0;
+            } while (*++end);
 
             cout << "Patched " << dll_name << " to " << new_dll_name << "\n";
 
