@@ -1,6 +1,6 @@
 # dllpatch.exe
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT) [![Build status](https://ci.appveyor.com/api/projects/status/b5fj2ydh7ynyhkvx?svg=true)](https://ci.appveyor.com/project/iboB/dllpatch)
 
 Created for my blog post [The Search for Auto-Loaded DLLs and Windows rpath](https://ibob.github.io/blog/2018/12/16/windows-rpath/)
 
